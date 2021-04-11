@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Ticket": {
+      "properties": {
+        "customer_id": { "type": "integer" },
+        "payout": { "type": "number" },
+        "stake": { "type": "number" },
+        "ticket_id": { "type": "integer" }
+      },
+      "type": "object"
+    },
+    "TicketList": {
+      "items": { "$ref": "#/definitions/Ticket" },
+      "type": "array"
+    }
+  },
+  "info": {
+    "description": "powered by Flasgger",
+    "termsOfService": "/tos",
+    "title": "A swagger API",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/customers/{customer_id}/tickets": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "customer_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of ticket objects",
+            "schema": { "$ref": "#/definitions/TicketList" }
+          }
+        },
+        "summary": "Endpoint for getting all ticket data for one customer, by provided customer ID."
+      }
+    },
+    "/tickets": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "customer_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of ticket objects",
+            "schema": { "$ref": "#/definitions/TicketList" }
+          }
+        },
+        "summary": "Endpoint for getting all ticket data for one customer, by provided customer ID."
+      }
+    },
+    "/tickets/{ticket_id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ticket_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ticket object",
+            "schema": { "$ref": "#/definitions/Ticket" }
+          }
+        },
+        "summary": "Endpoint for getting ticket data for provided ID."
+      }
+    }
+  },
+  "swagger": "2.0"
+}

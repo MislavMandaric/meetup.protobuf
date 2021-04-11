@@ -1,0 +1,22 @@
+syntax = "proto3";
+package tickets;
+
+message Ticket {
+    int32 ticket_id = 1;
+    int32 customer_id = 2;
+    double stake = 3;
+    double payout = 4;
+}
+
+service TicketService {
+    rpc GetTicket(GetTicketRequest) returns (Ticket);
+    rpc GetCustomerTickets(GetCustomerTicketsRequest) returns (stream Ticket);
+}
+
+message GetTicketRequest {
+    int32 ticket_id = 1;
+}
+
+message GetCustomerTicketsRequest {
+    int32 customer_id = 1;
+}
