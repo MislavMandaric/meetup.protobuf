@@ -27,7 +27,7 @@
         "FLASK_APP": "server.py",
         "FLASK_ENV": "development"
       },
-      "args": ["run", "--no-debugger"],
+      "args": ["run", "--no-debugger", "--port=5001"],
       "jinja": true
     },
     {
